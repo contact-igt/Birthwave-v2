@@ -36,7 +36,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${plusJakarta.variable} ${poppins.variable} h-full antialiased overflow-x-hidden max-w-full`}
+      className={`${plusJakarta.variable} ${poppins.variable} h-full antialiased overflow-x-clip max-w-full`}
     >
       <GoogleTagManager gtmId="GTM-PW4F5S6P" />
       <Script
@@ -52,7 +52,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           `,
         }}
       />
-      <body className="min-h-full flex flex-col bg-cream text-ink pb-24 xl:pb-0 overflow-x-hidden max-w-full relative">
+      <body className="min-h-full flex flex-col bg-cream text-ink pb-24 xl:pb-0 overflow-x-clip max-w-full relative">
         <noscript>
           <iframe
             src="https://www.googletagmanager.com/ns.html?id=GTM-PW4F5S6P"

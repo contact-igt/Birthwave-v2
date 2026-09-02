@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Container } from "@/components/Container";
 import { Reveal } from "@/components/motion/Reveal";
+import { TextLink } from "@/components/home/TextLink";
 
 const services = [
   {
@@ -8,77 +9,110 @@ const services = [
     description:
       "Routine and high touch pregnancy care with a clear plan for each trimester.",
     href: "/pregnancy-antenatal-care",
+    span: "col-span-1 sm:col-span-4",
+    feature: true,
   },
   {
     title: "Fertility & Preconception",
     description: "Evaluation, counselling and planning before pregnancy.",
     href: "/fertility-preconception",
+    span: "col-span-1 sm:col-span-4",
   },
   {
     title: "Normal Birth & VBAC Support",
     description:
       "Personalised discussions around birth preferences, eligibility and preparation.",
     href: "/normal-birth-delivery",
+    span: "col-span-2 sm:col-span-4",
   },
   {
     title: "Gynaecology & Women’s Wellness",
     description: "Care for menstrual, hormonal and common gynaecological concerns.",
     href: "/gynaecology",
+    span: "col-span-1 sm:col-span-6",
   },
   {
     title: "Vaginismus & Intimate Wellness",
     description:
       "Private, sensitive support for pain, fear and intimacy related concerns.",
     href: "/vaginismus",
+    span: "col-span-1 sm:col-span-3",
   },
   {
     title: "Newborn & Pediatric Care",
     description:
       "Newborn review, vaccination guidance and continuing pediatric care.",
     href: "/newborn-pediatric-care",
+    span: "col-span-1 sm:col-span-3",
   },
 ] as const;
 
 export function Services() {
   return (
-    <section id="services" className="scroll-mt-[100px] bg-cream py-16 md:py-[110px]">
+    <section id="services" className="scroll-mt-[100px] bg-sand py-16 md:py-[110px]">
       <Container>
-        <div className="max-w-2xl">
-          <p className="text-[13px] font-semibold uppercase tracking-[0.14em] text-rose">
-            Care Across Every Chapter
-          </p>
-          <h2 className="mt-3 font-display text-[26px] sm:text-[32px] md:text-[38px] font-bold leading-tight text-ink">
-            Specialist care, designed around your journey.
-          </h2>
-          <p className="mt-3 text-[16px] leading-relaxed text-muted">
-            Comprehensive, doctor-led clinical services tailored to your individual health and wellness needs.
-          </p>
+        <div className="mb-9 block md:mb-[52px] xl:flex xl:items-end xl:justify-between xl:gap-[30px]">
+          <div className="max-w-[700px]">
+            <p className="text-[13px] font-semibold tracking-[0.14em] text-rose uppercase">
+              Care Across Every Chapter
+            </p>
+            <h2 className="mt-4 title-section text-ink">
+              Specialist care, designed around your journey.
+            </h2>
+            <p className="mt-4 max-w-[580px] text-[16px] leading-relaxed text-muted md:text-[17px]">
+              Comprehensive, doctor-led clinical services tailored to your individual
+              health and wellness needs.
+            </p>
+          </div>
+          <TextLink href="#conversion-cta" className="mt-5 shrink-0 xl:mt-0">
+            Find the right care
+          </TextLink>
         </div>
 
-        <div className="mt-10 grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+        <div className="grid grid-cols-2 gap-2.5 sm:grid-cols-12 sm:gap-[14px]">
           {services.map((service, i) => (
-            <Reveal key={service.title} delay={(i % 3) * 80}>
-              <div className="flex min-h-[222px] flex-col rounded-[22px] border border-border bg-white p-6 shadow-[0_1px_2px_rgba(46,36,33,0.04)] transition-all duration-200 hover:-translate-y-1 hover:shadow-[0_10px_28px_rgba(46,36,33,0.08)]">
-                <div className="flex items-center gap-2">
-                  <span className="text-[11px] font-bold text-coral">
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
-                  <span className="h-1 w-1 rounded-full bg-coral" aria-hidden="true" />
-                </div>
-                <h3 className="mt-4 font-display text-[17.5px] font-semibold text-ink">
+            <Reveal
+              key={service.title}
+              delay={(i % 3) * 80}
+              className={service.span}
+            >
+              <Link
+                href={service.href}
+                className={`group flex h-full min-h-[215px] min-w-0 flex-col rounded-[20px] border p-5 transition-[transform,box-shadow,background] duration-300 hover:-translate-y-[5px] hover:shadow-[var(--shadow-od)] sm:min-h-[220px] sm:p-[27px] ${
+                  "feature" in service && service.feature
+                    ? "border-transparent bg-rose text-white hover:bg-rose-deep"
+                    : "border-border bg-white/70 hover:bg-white"
+                }`}
+              >
+                <span
+                  className={`mb-auto font-display text-sm ${
+                    "feature" in service && service.feature ? "text-white/80" : "text-rose"
+                  }`}
+                >
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <h3
+                  className={`mt-[18px] mb-[9px] font-display text-[clamp(16px,4.6vw,20px)] leading-[1.1] font-bold tracking-[-0.01em] break-words sm:text-[24px] ${
+                    "feature" in service && service.feature ? "text-white" : "text-ink"
+                  }`}
+                >
                   {service.title}
                 </h3>
-                <p className="mt-2 flex-1 text-[15px] leading-relaxed text-muted">
+                <p
+                  className={`text-[13px] leading-[1.5] sm:text-sm ${
+                    "feature" in service && service.feature ? "text-white/85" : "text-muted"
+                  }`}
+                >
                   {service.description}
                 </p>
-                <Link
-                  href={service.href}
-                  className="mt-4 inline-flex items-center gap-1.5 text-[13px] font-semibold text-link transition-colors hover:text-brown"
+                <span
+                  className={`mt-[19px] text-[13px] font-bold ${
+                    "feature" in service && service.feature ? "text-white/85" : "text-rose"
+                  }`}
                 >
-                  Explore service
-                  <span aria-hidden="true">&rarr;</span>
-                </Link>
-              </div>
+                  Explore service →
+                </span>
+              </Link>
             </Reveal>
           ))}
         </div>
@@ -86,4 +120,3 @@ export function Services() {
     </section>
   );
 }
-

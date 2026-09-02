@@ -28,7 +28,7 @@ export function TeamAvatar({
 }) {
   if (member.image) {
     return (
-      <div className={`relative overflow-hidden rounded-[24px] bg-sky ${className}`}>
+      <div className={`relative overflow-hidden rounded-[24px] bg-sand ${className}`}>
         <Image
           src={member.image}
           alt={`${member.name}, ${member.role}`}

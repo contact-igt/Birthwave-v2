@@ -1,8 +1,10 @@
 import Link from "next/link";
-import { Container } from "@/components/Container";
-import { Reveal } from "@/components/motion/Reveal";
 import { services, type ServiceContent } from "@/lib/services";
 
+/**
+ * Related / connected care — ported to the v2 LPS `RelatedCareBand`: a dark
+ * band with a sticky editorial column beside hairline link rows.
+ */
 export function RelatedSupport({
   currentSlug,
   connectedCare,
@@ -22,52 +24,51 @@ export function RelatedSupport({
           ctaText: "Learn more",
         }));
 
-  const eyebrow = connectedCare?.eyebrow ?? "RELATED CARE";
+  const eyebrow = connectedCare?.eyebrow ?? "Related care";
   const heading = connectedCare?.heading ?? "Related Birthwave support";
-  const intro = connectedCare?.intro;
+  const intro =
+    connectedCare?.intro ??
+    "Care, preparation and ongoing support, connected in one journey.";
 
   return (
-    <section className="bg-white py-16 md:py-24">
-      <Container>
-        <div className="max-w-2xl">
-          <p className="text-[13px] font-semibold uppercase tracking-[0.14em] text-rose">
+    <section className="bg-ink py-16 text-white md:py-24">
+      <div className="mx-auto grid w-full max-w-[1220px] gap-12 px-6 sm:px-8 lg:px-12 xl:grid-cols-[0.75fr_1.25fr] xl:gap-[90px]">
+        <div className="xl:sticky xl:top-[120px] xl:self-start">
+          <p className="mb-4 text-xs font-semibold tracking-[0.16em] text-coral uppercase">
             {eyebrow}
           </p>
-          <h2 className="mt-3 font-display text-[28px] sm:text-[32px] font-bold leading-tight text-ink">
+          <h2 className="title-section">
             {heading}
           </h2>
-          {intro && (
-            <p className="mt-3 text-[16px] leading-[1.65] text-muted">
-              {intro}
-            </p>
-          )}
+          <p className="my-6 max-w-[390px] text-[15px] leading-relaxed text-white/70">{intro}</p>
+          <Link
+            href="#contact-form"
+            className="inline-flex min-h-[48px] items-center justify-center rounded-full bg-white px-6 text-sm font-semibold text-ink transition-colors hover:bg-blush"
+          >
+            Talk to the team
+          </Link>
         </div>
 
-        <div className="mt-10 grid gap-5 sm:grid-cols-3">
-          {cards.map((item, i) => (
-            <Reveal
+        <div className="border-t border-white/20">
+          {cards.map((item) => (
+            <Link
               key={item.title}
-              delay={i * 60}
-              className="group flex flex-col justify-between rounded-[22px] border border-border/80 bg-cream/40 p-6 sm:p-7 transition-all duration-300 hover:-translate-y-1 hover:border-brown/40 hover:bg-white hover:shadow-[0_12px_32px_rgba(46,36,33,0.08)]"
+              href={item.href}
+              className="grid grid-cols-[1fr_auto] items-start gap-4 border-b border-white/20 py-7 transition-[padding] duration-200 hover:pl-2.5"
             >
               <div>
-                <h3 className="font-display text-[18px] font-bold text-ink transition-colors group-hover:text-brown">
+                <h3 className="font-display text-[24px] leading-[1.15] font-semibold sm:text-[28px]">
                   {item.title}
                 </h3>
-                <p className="mt-2.5 text-[14.5px] leading-relaxed text-muted">
-                  {item.description}
-                </p>
+                <p className="mt-[7px] max-w-[500px] text-sm text-white/70">{item.description}</p>
               </div>
-              <Link
-                href={item.href}
-                className="mt-6 inline-flex items-center gap-1.5 text-[14px] font-semibold text-link transition-colors group-hover:text-brown"
-              >
-                {item.ctaText} <span aria-hidden="true">&rarr;</span>
-              </Link>
-            </Reveal>
+              <span aria-hidden="true" className="text-2xl text-coral">
+                ↗
+              </span>
+            </Link>
           ))}
         </div>
-      </Container>
+      </div>
     </section>
   );
 }

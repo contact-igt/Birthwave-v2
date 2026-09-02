@@ -16,7 +16,7 @@ export async function GoogleGallery() {
     <section className="bg-white py-16 md:py-20">
       <Container>
         <div className="flex flex-wrap items-end justify-between gap-4">
-          <h2 className="max-w-xl font-display text-[28px] font-bold leading-tight text-ink">
+          <h2 className="max-w-xl title-section text-ink">
             More from Google
           </h2>
           {data.googleMapsUrl && (

@@ -1,11 +1,13 @@
 "use client";
 
-import { Suspense, useState } from "react";
+import { useState } from "react";
 import Link from "next/link";
 import { Container } from "@/components/Container";
 import { Reveal } from "@/components/motion/Reveal";
 import { PageHero } from "@/components/page/PageHero";
-import { EnquiryForm } from "@/components/page/EnquiryForm";
+import { CareGrid } from "@/components/page/CareGrid";
+import { ServiceApproach } from "@/components/page/ServiceApproach";
+import { EnquirySection } from "@/components/page/EnquirySection";
 import { TeamAvatar } from "@/components/TeamAvatar";
 import { VideoExperience } from "@/components/home/VideoExperience";
 import { site } from "@/lib/site";
@@ -132,13 +134,22 @@ export function BirthDeliveryCarePage() {
     <main>
       {/* SECTION 1: Page Hero */}
       <PageHero
+        tone="dark"
         eyebrow="NATURAL BIRTH CARE IN CHENNAI"
         heading="Prepare for a natural birth with confidence, knowledge and the right support."
         intro="At Birthwave, natural birth preparation begins during pregnancy. We help you understand labour, prepare your body and mind, explore your birth preferences, and approach childbirth with personalised obstetric care and holistic support."
         accent="coral"
         image={{
-          src: "/images/birthwave/birthwave-childbirth-workshop-01.png",
-          alt: "Birth preparation workshop at Birthwave",
+          src: "/images/care/birth-position-practice.png",
+          alt: "A pregnant woman practising a birth-ball position during a workshop",
+        }}
+        imageSide={{
+          src: "/images/care/prenatal-workshop.png",
+          alt: "A birth partner practising a hand-holding support technique",
+        }}
+        tag={{
+          heading: "Informed choices",
+          body: "with a care team beside you through preparation.",
         }}
         illustration="birth"
       />
@@ -149,7 +160,7 @@ export function BirthDeliveryCarePage() {
           <p className="text-[13px] font-semibold uppercase tracking-[0.14em] text-rose">
             Understanding Natural Birth
           </p>
-          <h2 className="mt-3 font-display text-[28px] font-bold leading-tight text-ink sm:text-[34px]">
+          <h2 className="mt-3 title-section text-ink">
             What is Natural Birth?
           </h2>
           <div className="mt-5 space-y-4 text-[16px] leading-[1.7] text-muted">
@@ -169,97 +180,93 @@ export function BirthDeliveryCarePage() {
         </Container>
       </section>
 
-      {/* SECTION 3: CLEARING UP A COMMON QUESTION */}
-      <section className="bg-cream/40 py-16 md:py-24 border-b border-border/60">
-        <Container>
-          <div className="max-w-3xl">
-            <p className="text-[13px] font-semibold uppercase tracking-[0.14em] text-rose">
-              Clearing Up A Common Question
-            </p>
-            <h2 className="mt-3 font-display text-[28px] font-bold leading-tight text-ink sm:text-[34px]">
-              Natural birth and normal vaginal delivery — are they the same?
-            </h2>
-            <p className="mt-3.5 text-[16px] leading-[1.65] text-muted">
-              Both may result in a baby being born vaginally, but the terms are often used differently when discussing the approach to labour.
-            </p>
-          </div>
+      {/* SECTION 2b: WHAT NATURAL BIRTH MEANS AT THE BIRTHWAVE (v2 editorial band) */}
+      <ServiceApproach
+        eyebrow="What natural birth means at The Birthwave"
+        heading="An approach, not a route of delivery."
+        body="Natural birth describes how you prepare for and experience labour — through movement, breathing, relaxation, comfort measures and informed choice — with fewer routine interventions where clinically appropriate. The Birthwave team can help you understand what preparation and support may be appropriate for your pregnancy."
+        image={{
+          src: "/images/care/workshop-facilitator.png",
+          alt: "A childbirth educator teaching with a pelvis model during a workshop",
+        }}
+        items={[
+          {
+            title: "Learn",
+            description:
+              "Understand labour, breathing, movement, positioning and comfort measures — and how they may fit your pregnancy.",
+          },
+          {
+            title: "Prepare",
+            description:
+              "Build confidence through childbirth education, practical preparation and birth-partner involvement.",
+          },
+          {
+            title: "Adapt",
+            description:
+              "Preferences can change. Pain-relief options stay part of the conversation, and your clinical circumstances stay at the centre of every decision.",
+          },
+        ]}
+      />
 
-          <div className="mt-10 grid gap-6 md:grid-cols-2">
-            {/* Card 1: Natural Birth */}
-            <Reveal className="flex flex-col rounded-[26px] border border-border/90 bg-white p-7 sm:p-8 shadow-[0_4px_24px_rgba(46,36,33,0.04)]">
-              <span className="inline-flex w-fit items-center gap-1.5 rounded-full bg-blush px-3.5 py-1 text-[12px] font-semibold uppercase tracking-wider text-rose">
+      {/* SECTION 3: CLEARING UP A COMMON QUESTION */}
+      <section className="bg-sand py-16 md:py-24">
+        <div className="mx-auto w-full max-w-[1220px] px-6 sm:px-8 lg:px-12">
+          <p className="mb-4 text-xs font-semibold uppercase tracking-[0.16em] text-rose">
+            Clearing Up A Common Question
+          </p>
+          <h2 className="max-w-[640px] title-section text-ink">
+            Natural birth and normal vaginal delivery — are they the same?
+          </h2>
+          <p className="mt-4 max-w-[640px] text-[16px] leading-[1.65] text-muted">
+            Both may result in a baby being born vaginally, but the terms are often used differently when discussing the approach to labour.
+          </p>
+
+          <div className="mt-10 grid gap-10 border-t border-ink/10 xl:grid-cols-2 xl:gap-16">
+            <div className="border-b border-ink/10 py-7 xl:border-b-0 xl:border-r xl:pr-16">
+              <p className="mb-2 text-xs font-semibold uppercase tracking-[0.14em] text-rose">
                 Focused Preparation
-              </span>
-              <h3 className="mt-4 font-display text-[22px] font-bold text-ink">
-                Natural Birth
-              </h3>
-              <p className="mt-2 text-[15px] leading-relaxed text-muted">
+              </p>
+              <h3 className="mb-3 font-display text-2xl font-bold text-ink">Natural Birth</h3>
+              <p className="text-[0.98rem] leading-relaxed text-muted">
                 Natural birth usually describes an approach where a woman wishes to experience labour with minimal medical intervention when appropriate. Preparation and support may include:
               </p>
-              <ul className="mt-5 space-y-3 border-t border-border/60 pt-5">
-                <li className="flex items-start gap-3 text-[14.5px] text-ink/85">
-                  <span className="mt-1 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-cream text-brown">
-                    ✓
-                  </span>
-                  <div>
-                    <strong className="font-semibold text-ink">Breathing &amp; relaxation:</strong> Techniques to help you stay calm and work through contractions.
-                  </div>
+              <ul className="mt-5 space-y-3 border-t border-ink/10 pt-5 text-[14.5px] leading-relaxed text-muted">
+                <li>
+                  <strong className="font-semibold text-ink">Breathing &amp; relaxation:</strong> Techniques to help you stay calm and work through contractions.
                 </li>
-                <li className="flex items-start gap-3 text-[14.5px] text-ink/85">
-                  <span className="mt-1 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-cream text-brown">
-                    ✓
-                  </span>
-                  <div>
-                    <strong className="font-semibold text-ink">Movement &amp; positioning:</strong> Using comfortable positions and movement during labour where appropriate.
-                  </div>
+                <li>
+                  <strong className="font-semibold text-ink">Movement &amp; positioning:</strong> Using comfortable positions and movement during labour where appropriate.
                 </li>
-                <li className="flex items-start gap-3 text-[14.5px] text-ink/85">
-                  <span className="mt-1 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-cream text-brown">
-                    ✓
-                  </span>
-                  <div>
-                    <strong className="font-semibold text-ink">Non-medical comfort measures:</strong> Options such as massage and other supportive techniques may be considered based on individual preference and availability.
-                  </div>
+                <li>
+                  <strong className="font-semibold text-ink">Non-medical comfort measures:</strong> Options such as massage and other supportive techniques may be considered based on individual preference and availability.
                 </li>
-                <li className="flex items-start gap-3 text-[14.5px] text-ink/85">
-                  <span className="mt-1 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-cream text-brown">
-                    ✓
-                  </span>
-                  <div>
-                    <strong className="font-semibold text-ink">Continuous support:</strong> Emotional and practical support from the care team and birth partner.
-                  </div>
+                <li>
+                  <strong className="font-semibold text-ink">Continuous support:</strong> Emotional and practical support from the care team and birth partner.
                 </li>
               </ul>
-            </Reveal>
+            </div>
 
-            {/* Card 2: Normal Vaginal Delivery */}
-            <Reveal delay={80} className="flex flex-col rounded-[26px] border border-border/90 bg-white p-7 sm:p-8 shadow-[0_4px_24px_rgba(46,36,33,0.04)]">
-              <span className="inline-flex w-fit items-center gap-1.5 rounded-full bg-cream px-3.5 py-1 text-[12px] font-semibold uppercase tracking-wider text-brown">
+            <div className="py-7">
+              <p className="mb-2 text-xs font-semibold uppercase tracking-[0.14em] text-rose">
                 Clinical Overview
-              </span>
-              <h3 className="mt-4 font-display text-[22px] font-bold text-ink">
+              </p>
+              <h3 className="mb-3 font-display text-2xl font-bold text-ink">
                 Normal Vaginal Delivery
               </h3>
-              <p className="mt-2 text-[15px] leading-relaxed text-muted">
+              <p className="text-[0.98rem] leading-relaxed text-muted">
                 Normal vaginal delivery refers more broadly to giving birth vaginally. Depending on the individual situation and the woman’s preferences, pain-relief options or other appropriate obstetric interventions may form part of the labour and delivery care.
               </p>
-              <div className="mt-6 rounded-2xl border border-border/70 bg-cream/40 p-5">
-                <p className="text-[14px] leading-relaxed text-ink/80">
-                  Whether labour progresses naturally or requires supportive pain relief or medical assistance, the focus is always on ensuring the safety and comfort of both mother and baby.
-                </p>
-              </div>
-            </Reveal>
+              <p className="mt-5 border-t border-ink/10 pt-5 text-[14.5px] leading-relaxed text-muted">
+                Whether labour progresses naturally or requires supportive pain relief or medical assistance, the focus is always on ensuring the safety and comfort of both mother and baby.
+              </p>
+            </div>
           </div>
 
-          <div className="mt-8 rounded-2xl border border-border/80 bg-white p-6 sm:p-7 shadow-sm">
-            <h4 className="font-display text-[17px] font-bold text-ink">
-              The right birth approach is individual to every woman.
-            </h4>
-            <p className="mt-1.5 text-[15px] leading-relaxed text-muted">
-              Your obstetrician can help you understand your options based on your pregnancy, health, preferences and clinical circumstances.
-            </p>
-          </div>
-        </Container>
+          <p className="mt-8 max-w-[720px] text-[0.98rem] leading-relaxed text-muted italic">
+            <strong className="font-semibold not-italic text-ink">The right birth approach is individual to every woman.</strong>{" "}
+            Your obstetrician can help you understand your options based on your pregnancy, health, preferences and clinical circumstances.
+          </p>
+        </div>
       </section>
 
       {/* SECTION 4: THE BIRTHWAVE APPROACH */}
@@ -269,7 +276,7 @@ export function BirthDeliveryCarePage() {
             <p className="text-[13px] font-semibold uppercase tracking-[0.14em] text-rose">
               The Birthwave Approach
             </p>
-            <h2 className="mt-3 font-display text-[28px] font-bold leading-tight text-ink sm:text-[34px]">
+            <h2 className="mt-3 title-section text-ink">
               Natural birth preparation starts before the day of delivery.
             </h2>
             <p className="mt-3.5 text-[16px] leading-[1.65] text-muted">
@@ -280,65 +287,69 @@ export function BirthDeliveryCarePage() {
             </h3>
           </div>
 
-          <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {[
-              {
-                title: "Understanding Labour",
-                desc: "Learn about the stages of labour, contractions, signs that labour may be beginning and when to contact your care team.",
-                icon: "labour",
-              },
-              {
-                title: "Birth Planning",
-                desc: "Discuss your preferences and understand the choices that may be available during labour and birth.",
-                icon: "planning",
-              },
-              {
-                title: "Breathing & Relaxation",
-                desc: "Learn practical breathing and relaxation techniques that may help you cope with labour.",
-                icon: "breathing",
-              },
-              {
-                title: "Movement & Positioning",
-                desc: "Understand comfortable movement and positions that may be used during labour based on your individual circumstances.",
-                icon: "movement",
-              },
-              {
-                title: "Birth Partner Preparation",
-                desc: "Help your partner understand labour and how they can provide practical and emotional support.",
-                icon: "partner",
-              },
-              {
-                title: "Childbirth Education",
-                desc: "Prepare for what to expect during labour, delivery and the early period after birth.",
-                icon: "education",
-              },
-            ].map((item, i) => (
-              <Reveal
-                key={item.title}
-                delay={i * 50}
-                className="group flex flex-col justify-between rounded-[22px] border border-border/80 bg-cream/35 p-6 sm:p-7 transition-all duration-300 hover:-translate-y-1 hover:border-brown/40 hover:bg-white hover:shadow-[0_12px_32px_rgba(46,36,33,0.06)]"
-              >
-                <div>
-                  <span className="flex h-11 w-11 items-center justify-center rounded-2xl border border-border/60 bg-white shadow-[0_2px_8px_rgba(46,36,33,0.04)] transition-colors group-hover:bg-blush">
-                    <SectionIcon type={item.icon} />
-                  </span>
-                  <h4 className="mt-4 font-display text-[17px] font-bold text-ink transition-colors group-hover:text-brown">
-                    {item.title}
-                  </h4>
-                  <p className="mt-2 text-[14.5px] leading-relaxed text-muted">
-                    {item.desc}
-                  </p>
-                </div>
-              </Reveal>
-            ))}
+          <div className="mt-10">
+            <CareGrid
+              layout="even"
+              items={[
+                {
+                  number: "01 / START HERE",
+                  title: "Understanding Labour",
+                  description:
+                    "Learn about the stages of labour, contractions, signs that labour may be beginning and when to contact your care team.",
+                  feature: true,
+                  linkLabel: "Learn more",
+                },
+                {
+                  number: "02",
+                  title: "Birth Planning",
+                  description:
+                    "Discuss your preferences and understand the choices that may be available during labour and birth.",
+                  linkLabel: "Learn more",
+                },
+                {
+                  number: "03",
+                  title: "Breathing & Relaxation",
+                  description:
+                    "Learn practical breathing and relaxation techniques that may help you cope with labour.",
+                  linkLabel: "Learn more",
+                },
+                {
+                  number: "04",
+                  title: "Movement & Positioning",
+                  description:
+                    "Understand comfortable movement and positions that may be used during labour based on your individual circumstances.",
+                  linkLabel: "Learn more",
+                },
+                {
+                  number: "05",
+                  title: "Birth Partner Preparation",
+                  description:
+                    "Help your partner understand labour and how they can provide practical and emotional support.",
+                  linkLabel: "Learn more",
+                },
+                {
+                  number: "06",
+                  title: "Childbirth Education",
+                  description:
+                    "Prepare for what to expect during labour, delivery and the early period after birth.",
+                  linkLabel: "Learn more",
+                },
+              ]}
+            />
           </div>
 
           <div className="mt-10">
             <a
               href="#contact-form"
-              className="inline-flex items-center justify-center rounded-full bg-brown px-7 py-3.5 text-[15px] font-semibold text-white transition-all duration-150 hover:bg-brown-600 active:scale-[0.98] shadow-[0_4px_16px_rgba(97,62,55,0.2)]"
+              className="group inline-flex items-center justify-center gap-2.5 rounded-full bg-rose px-7 py-3.5 text-[15px] font-semibold text-white shadow-[0_8px_18px_rgba(202,149,133,0.28)] transition-all duration-200 hover:-translate-y-0.5 hover:bg-rose-deep active:scale-[0.98]"
             >
-              Start Your Birth Preparation &rarr;
+              Start Your Birth Preparation
+              <span
+                aria-hidden="true"
+                className="transition-transform duration-200 group-hover:translate-x-1"
+              >
+                &rarr;
+              </span>
             </a>
           </div>
         </Container>
@@ -351,7 +362,7 @@ export function BirthDeliveryCarePage() {
             <p className="text-[13px] font-semibold uppercase tracking-[0.14em] text-rose">
               Preparing Your Body &amp; Mind
             </p>
-            <h2 className="mt-3 font-display text-[28px] font-bold leading-tight text-ink sm:text-[34px]">
+            <h2 className="mt-3 title-section text-ink">
               Preparing for natural birth during pregnancy
             </h2>
             <p className="mt-3.5 text-[16px] leading-[1.65] text-muted">
@@ -419,44 +430,49 @@ export function BirthDeliveryCarePage() {
 
       {/* SECTION 6: MEET YOUR DOCTOR */}
       <section className="bg-white py-16 md:py-24 border-b border-border/60">
-        <Container>
-          <div className="max-w-3xl">
+        <Container className="grid items-center gap-12 xl:grid-cols-[420px_1fr] xl:gap-16">
+          <div className="relative mx-auto h-[380px] w-full max-w-sm xl:h-[440px]">
+            <TeamAvatar
+              member={santoshi}
+              focal="top"
+              className="h-full w-full !rounded-[120px_20px_20px_20px]"
+            />
+            <div className="absolute inset-x-5 bottom-5 rounded-2xl bg-white p-4 text-center shadow-[0_8px_24px_rgba(46,36,33,0.08)]">
+              <p className="font-display text-[15px] font-bold text-ink">Dr. Santoshi Nandigam</p>
+              <p className="mt-0.5 text-[13px] text-muted">Founder &middot; Obstetrician &amp; Gynaecologist</p>
+            </div>
+          </div>
+
+          <div>
             <p className="text-[13px] font-semibold uppercase tracking-[0.14em] text-rose">
               Doctor-Led, Women-Centred Care
             </p>
-            <h2 className="mt-3 font-display text-[28px] font-bold leading-tight text-ink sm:text-[34px]">
+            <h2 className="mt-3 max-w-xl title-section text-ink">
               Meet Dr. Santoshi Nandigam
             </h2>
-            <p className="mt-1 text-[15px] font-semibold text-muted">
-              Founder, Birthwave | Obstetrician &amp; Gynaecologist
-            </p>
-          </div>
-
-          <div className="mt-10 rounded-[28px] border border-border/80 bg-cream/35 p-6 sm:p-8 lg:p-10">
-            <div className="grid gap-8 lg:grid-cols-[280px_1fr] lg:items-center">
-              <div className="relative mx-auto h-[280px] w-[240px] shrink-0 overflow-hidden rounded-[24px] border border-border shadow-[0_8px_24px_rgba(46,36,33,0.08)]">
-                <TeamAvatar member={santoshi} focal="top" className="h-full w-full" />
-              </div>
-              <div className="space-y-4 text-[16px] leading-[1.7] text-ink/85">
-                <p>
-                  At Birthwave, Dr. Santoshi works with women throughout pregnancy to understand their health, concerns, preferences and expectations around childbirth.
-                </p>
-                <p>
-                  For women interested in natural birth, discussions can begin during antenatal care — helping you understand labour, explore your birth preferences and prepare for childbirth with medical guidance alongside Birthwave’s supportive approach to pregnancy and wellness.
-                </p>
-                <p className="font-medium text-ink">
-                  The focus is on informed choices, individualised care and clear communication throughout pregnancy and birth.
-                </p>
-                <div className="pt-3">
-                  <a
-                    href="#contact-form"
-                    className="inline-flex items-center justify-center rounded-full bg-brown px-7 py-3.5 text-[15px] font-semibold text-white transition-all duration-150 hover:bg-brown-600 active:scale-[0.98] shadow-[0_4px_16px_rgba(97,62,55,0.2)]"
-                  >
-                    Book a Consultation with Dr. Santoshi &rarr;
-                  </a>
-                </div>
-              </div>
+            <div className="mt-4 max-w-xl space-y-4 text-[16px] leading-relaxed text-muted">
+              <p>
+                At Birthwave, Dr. Santoshi works with women throughout pregnancy to understand their health, concerns, preferences and expectations around childbirth.
+              </p>
+              <p>
+                For women interested in natural birth, discussions can begin during antenatal care — helping you understand labour, explore your birth preferences and prepare for childbirth with medical guidance alongside Birthwave’s supportive approach to pregnancy and wellness.
+              </p>
+              <p className="font-medium text-ink">
+                The focus is on informed choices, individualised care and clear communication throughout pregnancy and birth.
+              </p>
             </div>
+            <a
+              href="#contact-form"
+              className="group mt-7 inline-flex items-center gap-2.5 rounded-full bg-rose px-7 py-3.5 text-[15px] font-semibold text-white shadow-[0_8px_18px_rgba(202,149,133,0.28)] transition-all duration-200 hover:-translate-y-0.5 hover:bg-rose-deep active:scale-[0.98]"
+            >
+              Book a Consultation with Dr. Santoshi
+              <span
+                aria-hidden="true"
+                className="transition-transform duration-200 group-hover:translate-x-1"
+              >
+                &rarr;
+              </span>
+            </a>
           </div>
         </Container>
       </section>
@@ -467,7 +483,7 @@ export function BirthDeliveryCarePage() {
           <p className="text-[13px] font-semibold uppercase tracking-[0.14em] text-rose">
             Suitability &amp; Candidacy
           </p>
-          <h2 className="mt-3 font-display text-[28px] font-bold leading-tight text-ink sm:text-[34px]">
+          <h2 className="mt-3 title-section text-ink">
             Your natural birth journey starts with understanding your pregnancy.
           </h2>
           <p className="mt-3.5 text-[16px] leading-[1.65] text-muted">
@@ -514,7 +530,7 @@ export function BirthDeliveryCarePage() {
             <p className="text-[13px] font-semibold uppercase tracking-[0.14em] text-rose">
               Support During Labour
             </p>
-            <h2 className="mt-3 font-display text-[28px] font-bold leading-tight text-ink sm:text-[34px]">
+            <h2 className="mt-3 title-section text-ink">
               When preparation meets the day of birth
             </h2>
             <p className="mt-3.5 text-[16px] leading-[1.65] text-muted">
@@ -574,7 +590,7 @@ export function BirthDeliveryCarePage() {
             <p className="text-[13px] font-semibold uppercase tracking-[0.14em] text-rose">
               More Than Delivery
             </p>
-            <h2 className="mt-3 font-display text-[28px] font-bold leading-tight text-ink sm:text-[34px]">
+            <h2 className="mt-3 title-section text-ink">
               Care that connects pregnancy, birth and recovery
             </h2>
             <p className="mt-3.5 text-[16px] leading-[1.65] text-muted">
@@ -645,7 +661,7 @@ export function BirthDeliveryCarePage() {
                 {card.href ? (
                   <Link
                     href={card.href}
-                    className="mt-5 inline-flex items-center gap-1 text-[13.5px] font-semibold text-link transition-colors group-hover:text-brown"
+                    className="mt-5 inline-flex items-center gap-1 text-[13.5px] font-semibold text-rose transition-colors group-hover:text-rose-deep"
                   >
                     Learn more <span aria-hidden="true">&rarr;</span>
                   </Link>
@@ -660,85 +676,82 @@ export function BirthDeliveryCarePage() {
       <VideoExperience />
 
       {/* SECTION 10: FAQs */}
-      <section id="faq" className="scroll-mt-[100px] bg-white py-16 md:py-24 border-b border-border/60">
-        <Container className="max-w-3xl">
-          <div>
-            <p className="text-[13px] font-semibold uppercase tracking-[0.14em] text-rose">
+      <section id="faq" className="scroll-mt-[100px] bg-paper py-16 md:py-24">
+        <div className="mx-auto grid w-full max-w-[1220px] gap-10 px-6 sm:px-8 lg:px-12 xl:grid-cols-[0.65fr_1.35fr] xl:gap-[90px]">
+          <div className="max-w-[700px]">
+            <p className="mb-4 text-xs font-semibold uppercase tracking-[0.16em] text-rose">
               Frequently Asked Questions
             </p>
-            <h2 className="mt-3 font-display text-[28px] font-bold leading-tight text-ink sm:text-[34px]">
+            <h2 className="title-section text-ink">
               Frequently Asked Questions About Natural Birth
             </h2>
           </div>
 
-          <div className="mt-10 flex flex-col gap-3.5">
+          <div className="border-t border-ink/12">
             {faqsData.map((item, i) => {
               const open = openFaqIndex === i;
               return (
-                <Reveal
-                  key={item.q}
-                  delay={i * 50}
-                  className="overflow-hidden rounded-2xl border border-border bg-cream/30 transition-colors hover:border-brown/40"
-                >
+                <div key={item.q} className="border-b border-ink/12">
                   <button
                     type="button"
                     aria-expanded={open}
                     onClick={() => setOpenFaqIndex(open ? null : i)}
-                    className="flex min-h-[62px] w-full items-center justify-between gap-4 px-6 py-4.5 text-left"
+                    className="flex min-h-[70px] w-full items-center justify-between gap-4 py-[22px] text-left text-[0.95rem] font-semibold text-ink transition-colors hover:text-rose"
                   >
-                    <span className="text-[16px] font-semibold text-ink">
-                      {item.q}
-                    </span>
+                    <span className="min-w-0 flex-1">{item.q}</span>
                     <span
-                      className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-blush text-rose transition-transform duration-200 ${
+                      aria-hidden="true"
+                      className={`grid h-[25px] w-[25px] shrink-0 place-items-center font-display text-2xl leading-none text-rose transition-transform duration-200 ${
                         open ? "rotate-45" : ""
                       }`}
-                      aria-hidden="true"
                     >
-                      <svg width="12" height="12" viewBox="0 0 16 16" fill="none">
-                        <path
-                          d="M8 1v14M1 8h14"
-                          stroke="currentColor"
-                          strokeWidth="1.75"
-                          strokeLinecap="round"
-                        />
-                      </svg>
+                      +
                     </span>
                   </button>
                   <div
-                    className={`grid overflow-hidden text-[15px] leading-relaxed text-muted transition-[grid-template-rows,opacity] duration-300 ease-out ${
-                      open ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
+                    className={`grid overflow-hidden transition-[grid-template-rows] duration-300 ${
+                      open ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
                     }`}
                   >
-                    <div className="min-h-0 overflow-hidden px-6 pb-5 space-y-3 whitespace-pre-line text-ink/80">
-                      <p>{item.a}</p>
-                      {item.linkHref && (
-                        <div className="pt-2">
-                          <Link
-                            href={item.linkHref}
-                            className="inline-flex items-center gap-1.5 font-semibold text-link hover:text-brown transition-colors"
-                          >
-                            {item.linkText} <span aria-hidden="true">&rarr;</span>
-                          </Link>
-                        </div>
-                      )}
+                    <div className="min-h-0 overflow-hidden">
+                      <div
+                        className={`space-y-3 text-[0.9rem] leading-relaxed whitespace-pre-line text-muted ${
+                          open ? "pr-8 pb-6" : ""
+                        }`}
+                      >
+                        <p>{item.a}</p>
+                        {item.linkHref && (
+                          <div className="pt-2">
+                            <Link
+                              href={item.linkHref}
+                              className="inline-flex items-center gap-1.5 font-semibold text-rose hover:text-rose-deep transition-colors"
+                            >
+                              {item.linkText} <span aria-hidden="true">&rarr;</span>
+                            </Link>
+                          </div>
+                        )}
+                      </div>
                     </div>
                   </div>
-                </Reveal>
+                </div>
               );
             })}
           </div>
-        </Container>
+        </div>
       </section>
 
       {/* SECTION 11: FINAL CTA */}
-      <section className="bg-blush py-14 md:py-18">
-        <Container className="flex flex-col items-start justify-between gap-8 xl:flex-row xl:items-center">
+      <section className="relative overflow-hidden bg-blush py-16 md:py-24">
+        <span
+          aria-hidden="true"
+          className="pointer-events-none absolute -top-40 -right-32 h-[520px] w-[520px] rounded-full border border-rose/30"
+        />
+        <Container className="relative flex flex-col items-start justify-between gap-8 xl:flex-row xl:items-center">
           <div className="max-w-xl">
             <p className="text-[13px] font-semibold uppercase tracking-[0.14em] text-rose">
               Your Birth. Your Questions. Your Care.
             </p>
-            <h2 className="mt-2 font-display text-[28px] sm:text-[32px] font-bold leading-tight text-ink">
+            <h2 className="mt-2 title-section text-ink">
               Considering natural birth? Start with a conversation.
             </h2>
             <p className="mt-3 text-[16px] leading-relaxed text-muted">
@@ -774,21 +787,7 @@ export function BirthDeliveryCarePage() {
       </section>
 
       {/* ENQUIRY SECTION */}
-      <section id="contact-form" className="scroll-mt-[100px] bg-white py-16 md:py-20 pb-24 md:pb-20">
-        <Container className="max-w-2xl">
-          <h2 className="font-display text-[26px] font-bold leading-tight text-ink">
-            Send an enquiry
-          </h2>
-          <p className="mt-2 text-[15px] text-muted">
-            Prefer to write ahead? Fill this in and continue on WhatsApp.
-          </p>
-          <div className="mt-6">
-            <Suspense fallback={null}>
-              <EnquiryForm defaultService="natural-birth" />
-            </Suspense>
-          </div>
-        </Container>
-      </section>
+      <EnquirySection id="contact-form" defaultService="natural-birth" />
     </main>
   );
 }

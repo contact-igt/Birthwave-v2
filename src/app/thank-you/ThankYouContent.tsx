@@ -21,7 +21,7 @@ export function ThankYouContent() {
       <p className="text-[13px] font-semibold uppercase tracking-[0.14em] text-rose">
         Request Received
       </p>
-      <h1 className="mt-4 font-display text-[36px] font-bold leading-[1.15] text-ink sm:text-[42px]">
+      <h1 className="mt-4 title-hero text-ink">
         Thank you. We&rsquo;ve received your enquiry.
       </h1>
       <p className="mt-5 text-[16px] leading-[1.6] text-muted">

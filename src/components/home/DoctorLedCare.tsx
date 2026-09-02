@@ -15,7 +15,7 @@ export function DoctorLedCare() {
     <section id="doctor-led-care" className="scroll-mt-[100px] bg-white py-16 md:py-[100px]">
       <Container className="grid items-center gap-12 xl:grid-cols-[500px_1fr] xl:gap-16">
         <Reveal className="order-2 xl:order-1">
-          <div className="relative mx-auto h-[460px] w-full max-w-[500px] overflow-hidden rounded-[32px] bg-sky xl:h-[580px]">
+          <div className="relative mx-auto h-[460px] w-full max-w-[500px] overflow-hidden rounded-[120px_32px_32px_32px] bg-sand xl:h-[580px]">
             <Image
               src="/images/dr-santoshi-nandigam.png"
               alt={`${site.doctor.name}, ${site.doctor.title}`}
@@ -36,7 +36,7 @@ export function DoctorLedCare() {
             <p className="text-[13px] font-semibold uppercase tracking-[0.14em] text-rose">
               Doctor Led, Women-Centred Care
             </p>
-            <h2 className="mt-3 font-display text-[26px] sm:text-[32px] md:text-[37px] font-bold leading-tight text-ink">
+            <h2 className="mt-3 title-section text-ink">
               Clinical care and the birth experience can belong together.
             </h2>
             <p className="mt-5 max-w-xl text-[16.5px] leading-relaxed text-muted">
@@ -63,7 +63,7 @@ export function DoctorLedCare() {
 
             <Link
               href="/doctors"
-              className="mt-7 inline-flex rounded-full bg-brown px-7 py-3.5 text-[15px] font-semibold text-white transition-all duration-150 hover:bg-brown-600 active:scale-[0.98] active:bg-brown-700"
+              className="group mt-7 inline-flex items-center gap-2.5 rounded-full bg-rose px-7 py-3.5 text-[15px] font-semibold text-white shadow-[0_8px_18px_rgba(202,149,133,0.28)] transition-all duration-200 hover:-translate-y-0.5 hover:bg-rose-deep active:scale-[0.98]"
             >
               Meet Dr. Santoshi
             </Link>

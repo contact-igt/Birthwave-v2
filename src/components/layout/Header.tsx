@@ -6,6 +6,8 @@ import { BrandMark } from "@/components/BrandMark";
 import { Container } from "@/components/Container";
 import { nav, site } from "@/lib/site";
 
+const WHATSAPP_HREF = site.whatsappHref;
+
 type NavItem = (typeof nav)[number];
 
 function Chevron({ open }: { open: boolean }) {
@@ -28,7 +30,7 @@ function DesktopNavItem({ item }: { item: NavItem }) {
     return (
       <Link
         href={item.href}
-        className="text-[16px] font-medium text-ink/80 transition-colors hover:text-brown"
+        className="relative py-2 text-[16px] font-medium text-ink/80 transition-colors after:absolute after:bottom-0.5 after:left-0 after:right-full after:h-px after:bg-rose after:transition-[right] after:duration-200 hover:text-ink hover:after:right-0"
       >
         {item.label}
       </Link>
@@ -39,7 +41,7 @@ function DesktopNavItem({ item }: { item: NavItem }) {
     <div className="group relative">
       <Link
         href={item.href}
-        className="flex items-center gap-1 text-[16px] font-medium text-ink/80 transition-colors hover:text-brown focus-visible:text-brown"
+        className="flex items-center gap-1 text-[16px] font-medium text-ink/80 transition-colors hover:text-ink focus-visible:text-ink"
       >
         {item.label}
         <Chevron open={false} />
@@ -51,7 +53,7 @@ function DesktopNavItem({ item }: { item: NavItem }) {
           <Link
             key={child.href}
             href={child.href}
-            className="block rounded-xl px-3.5 py-2.5 text-[16px] font-medium text-ink/80 transition-colors hover:bg-cream hover:text-brown"
+            className="block rounded-xl px-3.5 py-2.5 text-[16px] font-medium text-ink/80 transition-colors hover:bg-cream hover:text-rose"
           >
             {child.label}
           </Link>
@@ -130,8 +132,10 @@ export function Header() {
 
   return (
     <header
-      className={`sticky top-0 z-50 h-[80px] md:h-[100px] border-b bg-white transition-shadow duration-200 ${
-        scrolled ? "border-border shadow-[0_2px_12px_rgba(46,36,33,0.06)]" : "border-border/70"
+      className={`sticky top-0 z-50 h-[80px] md:h-[100px] transition-[background-color,box-shadow,backdrop-filter] duration-300 ${
+        scrolled
+          ? "bg-cream/92 shadow-[0_1px_0_var(--color-border)] backdrop-blur-[18px]"
+          : "bg-cream/60 backdrop-blur-sm"
       }`}
     >
       <Container className="flex h-full items-center justify-between">
@@ -145,12 +149,20 @@ export function Header() {
           ))}
         </nav>
 
-        <Link
-          href="/contact#contact-form"
-          className="hidden rounded-full bg-brown px-5 py-2.5 text-[16px] font-semibold text-white transition-all duration-150 hover:bg-brown-600 active:scale-[0.98] xl:inline-block"
-        >
-          Book Appointment
-        </Link>
+        <div className="hidden items-center gap-2.5 xl:flex">
+          <a
+            href={site.phoneHref}
+            className="inline-flex min-h-[42px] items-center rounded-full border border-border bg-white/50 px-4 text-[15px] font-semibold whitespace-nowrap text-ink transition-colors hover:border-rose hover:bg-white"
+          >
+            Call
+          </a>
+          <Link
+            href="/contact#contact-form"
+            className="inline-flex min-h-[42px] items-center rounded-full bg-rose px-4 text-[15px] font-semibold whitespace-nowrap text-white shadow-[0_8px_18px_rgba(202,149,133,0.28)] transition-colors hover:bg-rose-deep active:scale-[0.98]"
+          >
+            Book Appointment
+          </Link>
+        </div>
 
         <button
           type="button"
@@ -182,7 +194,7 @@ export function Header() {
 
       <div
         id="mobile-nav"
-        className={`overflow-hidden border-t border-border bg-white transition-[grid-template-rows,opacity] duration-300 ease-out xl:hidden grid ${
+        className={`overflow-hidden border-t border-border bg-cream transition-[grid-template-rows,opacity] duration-300 ease-out xl:hidden grid ${
           open ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
         }`}
         style={{ display: "grid" }}
@@ -199,10 +211,18 @@ export function Header() {
               >
                 Call {site.phone}
               </a>
+              <a
+                href={WHATSAPP_HREF}
+                target="_blank"
+                rel="noreferrer"
+                className="min-h-11 rounded-full border border-border bg-white py-2.5 text-center text-sm font-semibold text-ink"
+              >
+                WhatsApp Birthwave
+              </a>
               <Link
                 href="/contact#contact-form"
                 onClick={() => setOpen(false)}
-                className="min-h-11 rounded-full bg-brown py-2.5 text-center text-sm font-semibold text-white flex items-center justify-center"
+                className="min-h-11 rounded-full bg-rose py-2.5 text-center text-sm font-semibold text-white flex items-center justify-center"
               >
                 Book Appointment
               </Link>

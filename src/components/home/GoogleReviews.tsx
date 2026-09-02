@@ -75,7 +75,7 @@ export async function GoogleReviews() {
             <p className="text-[13px] font-semibold uppercase tracking-[0.14em] text-rose">
               On Google
             </p>
-            <h2 className="mt-3 font-display text-[24px] sm:text-[28px] md:text-[30px] font-bold leading-tight text-ink">
+            <h2 className="mt-3 title-section text-ink">
               <Stars rating={rating} /> {rating.toFixed(1)} on Google
               <span className="ml-2 text-base font-medium text-muted">
                 ({reviewCount} reviews)
@@ -87,7 +87,7 @@ export async function GoogleReviews() {
               href={googleMapsUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[13.5px] font-semibold text-link transition-colors hover:text-brown"
+              className="text-[13.5px] font-semibold text-rose transition-colors hover:text-rose-deep"
             >
               View all reviews on Google &rarr;
             </a>

@@ -45,7 +45,7 @@ export default function DoctorsPage() {
               <p className="text-[13px] font-semibold uppercase tracking-[0.14em] text-rose">
                 Our Care Team
               </p>
-              <h1 className="mt-4 max-w-xl font-display text-[42px] font-bold leading-[1.1] text-ink sm:text-[46px]">
+              <h1 className="mt-4 max-w-xl title-hero text-ink">
                 Connected care, from one doctor to a whole team.
               </h1>
               <p className="mt-5 max-w-lg text-[16px] leading-[1.6] text-muted">
@@ -114,7 +114,7 @@ export default function DoctorsPage() {
               <p className="text-[13px] font-semibold uppercase tracking-[0.14em] text-rose">
                 Founder
               </p>
-              <h2 className="mt-3 font-display text-[32px] font-bold leading-tight text-ink">
+              <h2 className="mt-3 title-section text-ink">
                 {founder.name}
               </h2>
               <p className="mt-1 text-[13.5px] font-medium text-muted">{founder.role}</p>
@@ -137,7 +137,7 @@ export default function DoctorsPage() {
         {/* Clinical team */}
         <section className="bg-cream py-16 md:py-20">
           <Container>
-            <h2 className="max-w-xl font-display text-[28px] font-bold leading-tight text-ink">
+            <h2 className="max-w-xl title-section text-ink">
               Medical &amp; clinical team
             </h2>
             <div className="mt-8 grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
@@ -172,7 +172,7 @@ export default function DoctorsPage() {
         {/* Allied care team */}
         <section className="bg-white py-16 md:py-20">
           <Container>
-            <h2 className="max-w-xl font-display text-[28px] font-bold leading-tight text-ink">
+            <h2 className="max-w-xl title-section text-ink">
               Allied care team
             </h2>
             <div className="mt-8 grid gap-5 sm:grid-cols-2 xl:grid-cols-5">
@@ -200,7 +200,7 @@ export default function DoctorsPage() {
             <p className="text-[13px] font-semibold uppercase tracking-[0.14em] text-journey-eyebrow">
               One Team, Every Stage
             </p>
-            <h2 className="mt-3 max-w-xl font-display text-[28px] font-bold leading-tight text-white">
+            <h2 className="mt-3 max-w-xl title-section text-white">
               How the team supports your care
             </h2>
             <div className="mt-8 grid gap-3 sm:grid-cols-2 xl:grid-cols-4">

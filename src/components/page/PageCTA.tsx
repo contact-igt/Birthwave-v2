@@ -1,6 +1,10 @@
-import { Container } from "@/components/Container";
 import { site } from "@/lib/site";
 
+/**
+ * CTA band — ported to the v2 LPS dark-section styling with an oversized
+ * outline circle. Sits before the blush enquiry form so the two conversion
+ * sections stay visually distinct.
+ */
 export function PageCTA({
   eyebrow = "Ready When You Are",
   heading,
@@ -11,21 +15,25 @@ export function PageCTA({
   body: string;
 }) {
   return (
-    <section className="flex min-h-[260px] items-center bg-blush py-12">
-      <Container className="flex flex-col items-start justify-between gap-8 xl:flex-row xl:items-center">
-        <div className="max-w-lg">
-          <p className="text-[13px] font-semibold uppercase tracking-[0.14em] text-rose">
+    <section className="relative overflow-hidden bg-ink py-16 text-white md:py-24">
+      <span
+        aria-hidden="true"
+        className="pointer-events-none absolute -top-40 -right-32 h-[520px] w-[520px] rounded-full border border-white/15"
+      />
+      <div className="relative mx-auto flex w-full max-w-[1220px] flex-col items-start justify-between gap-8 px-6 sm:px-8 lg:px-12 xl:flex-row xl:items-center">
+        <div className="max-w-xl">
+          <p className="mb-4 text-xs font-semibold tracking-[0.16em] text-coral uppercase">
             {eyebrow}
           </p>
-          <h2 className="mt-2 font-display text-[28px] font-bold leading-tight text-ink">
+          <h2 className="title-section">
             {heading}
           </h2>
-          <p className="mt-2 text-[16px] leading-relaxed text-muted">{body}</p>
+          <p className="mt-4 text-[16px] leading-relaxed text-white/70">{body}</p>
         </div>
         <div className="flex shrink-0 flex-wrap items-center gap-3.5">
           <a
             href="#enquiry"
-            className="rounded-full bg-brown px-6 py-3.5 text-[15px] font-semibold text-white transition-all duration-150 hover:bg-brown-600 active:scale-[0.98] active:bg-brown-700 shadow-[0_4px_16px_rgba(97,62,55,0.2)]"
+            className="rounded-full bg-white px-6 py-3.5 text-[15px] font-semibold text-ink transition-all duration-200 hover:-translate-y-0.5 hover:bg-blush active:scale-[0.98]"
           >
             Book an Appointment
           </a>
@@ -33,18 +41,18 @@ export function PageCTA({
             href={site.whatsappHref}
             target="_blank"
             rel="noopener noreferrer"
-            className="rounded-full border border-border bg-white px-6 py-3.5 text-[15px] font-semibold text-ink transition-all duration-150 hover:border-brown hover:text-brown active:scale-[0.98]"
+            className="rounded-full border border-white/30 bg-transparent px-6 py-3.5 text-[15px] font-semibold text-white transition-colors hover:bg-white/10"
           >
             Chat on WhatsApp
           </a>
           <a
             href={site.phoneHref}
-            className="rounded-full border border-border bg-white px-6 py-3.5 text-[15px] font-semibold text-ink transition-all duration-150 hover:border-brown hover:text-brown active:scale-[0.98]"
+            className="rounded-full border border-white/30 bg-transparent px-6 py-3.5 text-[15px] font-semibold text-white transition-colors hover:bg-white/10"
           >
             Call: {site.phone}
           </a>
         </div>
-      </Container>
+      </div>
     </section>
   );
 }

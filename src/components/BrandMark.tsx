@@ -6,14 +6,18 @@ import Image from "next/image";
 // with overflow-hidden, effectively "zooming in" on the logo content.
 export function BrandMark({ size = "md" }: { size?: "sm" | "md" }) {
   if (size === "sm") {
+    // The artwork sits in the centre ~61% of the square PNG (left padding
+    // ~19.6%). Anchor the oversized image so the visible logo's left edge
+    // lines up with the container's left edge — and therefore with the page
+    // content below the header.
     return (
-      <div className="relative h-[80px] w-[210px] overflow-hidden flex items-center justify-center">
+      <div className="relative h-[80px] w-[196px] overflow-hidden">
         <Image
           src="/images/logo.PNG"
           alt="The Birth Wave – By Dr. Santoshi Nandigam"
           width={900}
           height={900}
-          className="absolute left-1/2 top-[52%] w-[310px] -translate-x-1/2 -translate-y-1/2 object-contain"
+          className="absolute left-0 top-[52%] w-[310px] -translate-x-[19.6%] -translate-y-1/2 object-contain"
           priority
         />
       </div>

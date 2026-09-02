@@ -18,7 +18,7 @@ const pathways = [
   {
     n: "02",
     bg: "bg-sky",
-    accentBorder: "group-hover:border-blue/40",
+    accentBorder: "group-hover:border-rose/40",
     title: "I’m pregnant",
     body: "Antenatal care, scans, birth planning and continuous clinical support.",
     link: "Pregnancy & Antenatal Care",
@@ -59,7 +59,7 @@ export function CarePathways() {
         aria-hidden="true"
       />
       <div
-        className="pointer-events-none absolute -right-20 top-1/4 h-80 w-80 rounded-full bg-sky/50 blur-3xl"
+        className="pointer-events-none absolute -right-20 top-1/4 h-80 w-80 rounded-full bg-sand/60 blur-3xl"
         aria-hidden="true"
       />
 
@@ -68,7 +68,7 @@ export function CarePathways() {
           <p className="text-[13px] font-semibold uppercase tracking-[0.14em] text-rose">
             Start With Your Need
           </p>
-          <h2 className="mt-3 font-display text-[36px] font-bold leading-tight text-ink md:text-[40px]">
+          <h2 className="mt-3 title-section text-ink">
             Start with what you need today.
           </h2>
           <p className="mt-3 text-[16px] leading-relaxed text-muted">

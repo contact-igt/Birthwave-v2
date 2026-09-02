@@ -7,11 +7,34 @@ export type ServiceContent = {
   shortDescription: string;
   accent: "rose" | "blue" | "coral";
   image?: { src: string; alt: string };
+  /** Smaller overlapping photo shown in the v2-style layered hero. When absent
+   *  the hero renders a single arched photo (or the illustration fallback). */
+  imageSide?: { src: string; alt: string };
   illustration: LineArtVariant;
+  /** Renders the v2 Natural Birth / Normal Vaginal Delivery comparison section. */
+  showBirthComparison?: boolean;
+  /** Renders the v2 "Clear, individual care" image + checklist band. */
+  featureBand?: {
+    eyebrow: string;
+    heading: string;
+    body: string;
+    points: readonly string[];
+    image: { src: string; alt: string };
+  };
+  /** Compact dark "continuum" bar shown directly under the hero. */
+  continuum?: {
+    eyebrow: string;
+    label: string;
+    steps: readonly { number: string; label: string }[];
+  };
   hero: {
     eyebrow: string;
     heading: string;
     intro: string;
+    /** Small pill on the hero image (v2-style). */
+    badge?: string;
+    /** Floating note card on the hero image (v2-style). */
+    tag?: { heading: string; body: string };
   };
   explanation: {
     heading: string;
@@ -28,6 +51,7 @@ export type ServiceContent = {
     eyebrow: string;
     heading: string;
     body: string;
+    image?: { src: string; alt: string };
     items: readonly { title: string; description: string }[];
   };
   connectedCare?: {
@@ -65,17 +89,37 @@ export const services: readonly ServiceContent[] = [
     title: "Pregnancy & Antenatal Care",
     shortDescription:
       "Routine and high-touch pregnancy care with a clear plan for each trimester.",
-    accent: "blue",
+    accent: "rose",
     image: {
-      src: "/images/birthwave/birthwave-antenatal-movement-coaching.png",
-      alt: "Antenatal movement coaching session at Birthwave",
+      src: "/images/care/birth-partner-session.png",
+      alt: "A pregnant woman and her partner in a calm antenatal session",
+    },
+    imageSide: {
+      src: "/images/care/antenatal-movement-coaching.png",
+      alt: "A pregnancy movement and wellness class",
     },
     illustration: "pregnancy",
+    continuum: {
+      eyebrow: "The pregnancy continuum",
+      label: "Care evolves as your pregnancy progresses.",
+      steps: [
+        { number: "01", label: "Early pregnancy" },
+        { number: "02", label: "Growing well" },
+        { number: "03", label: "Birth preparation" },
+        { number: "04", label: "Birth" },
+        { number: "05", label: "Recovery" },
+      ],
+    },
     hero: {
       eyebrow: "Pregnancy & Antenatal Care",
       heading: "Personalised pregnancy care, from your first visit to birth.",
       intro:
         "Every pregnancy brings different questions, changes and decisions. At Birthwave, your antenatal care combines regular medical guidance with nutrition, movement, birth preparation and continuous support throughout your pregnancy.",
+      badge: "Care that grows with you",
+      tag: {
+        heading: "One continuum",
+        body: "from early pregnancy to the birth you are preparing for.",
+      },
     },
     explanation: {
       heading: "Care that grows with your pregnancy",
@@ -103,6 +147,10 @@ export const services: readonly ServiceContent[] = [
       eyebrow: "The Birthwave Approach",
       heading: "Pregnancy care is more than appointments and scans.",
       body: "Medical care is at the centre of your pregnancy journey, but how you eat, move, prepare, understand your body and feel emotionally also matters.\nBirthwave brings these parts of pregnancy care together around you.",
+      image: {
+        src: "/images/care/childbirth-workshop-01.png",
+        alt: "A small group childbirth education workshop at The Birth Wave",
+      },
       items: [
         {
           title: "Pregnancy & medical care",
@@ -225,8 +273,28 @@ export const services: readonly ServiceContent[] = [
       "Personalised discussions around birth preferences, eligibility and preparation.",
     accent: "coral",
     image: {
-      src: "/images/birthwave/birthwave-birth-position-practice.png",
-      alt: "Birthing position practice during a Birthwave childbirth workshop",
+      src: "/images/care/childbirth-workshop-02.png",
+      alt: "A care team member demonstrating a labour support position during a workshop",
+    },
+    imageSide: {
+      src: "/images/care/clinic-interior.webp",
+      alt: "A calm consultation space inside The Birth Wave clinic",
+    },
+    showBirthComparison: true,
+    featureBand: {
+      eyebrow: "Clear, individual care",
+      heading: "Every birth story needs room to be its own.",
+      body: "Normal vaginal delivery is the route of birth — through the vagina rather than by Caesarean. The path to it is individual, and care decisions should reflect your pregnancy, your health and your clinician's guidance.",
+      points: [
+        "Ask questions early",
+        "Prepare with guidance",
+        "Keep options open",
+        "Review as things change",
+      ],
+      image: {
+        src: "/images/care/community-event.png",
+        alt: "A warm gathering of The Birth Wave families and care team",
+      },
     },
     illustration: "birth",
     hero: {
@@ -234,6 +302,11 @@ export const services: readonly ServiceContent[] = [
       heading: "Birth preparation and clinical flexibility, discussed together.",
       intro:
         "Birth planning, labour guidance and childbirth education — with an honest conversation about what's appropriate for your pregnancy, including when a caesarean may be the right path.",
+      badge: "Care, not a promise",
+      tag: {
+        heading: "Prepared together",
+        body: "with support through changing clinical needs.",
+      },
     },
     explanation: {
       heading: "What birth preparation involves",
@@ -302,8 +375,12 @@ export const services: readonly ServiceContent[] = [
       "Individual assessment and planning for patients considering VBAC.",
     accent: "rose",
     image: {
-      src: "/images/birthwave/birthwave-childbirth-workshop-02.png",
-      alt: "Birth preparation workshop group session at Birthwave",
+      src: "/images/care/postpartum-baby-feet.png",
+      alt: "A newborn's feet resting against a mother's postpartum belly",
+    },
+    imageSide: {
+      src: "/images/home/dr-santoshi-clinic.jpg",
+      alt: "Dr. Santoshi Nandigam at The Birth Wave clinic",
     },
     illustration: "vbac",
     hero: {
@@ -311,6 +388,11 @@ export const services: readonly ServiceContent[] = [
       heading: "Had a caesarean before? Let's discuss your options for this pregnancy.",
       intro:
         "VBAC isn't right for everyone, and it isn't ruled out for everyone either. We assess your previous birth history and this pregnancy individually, and plan from there.",
+      badge: "Individual care",
+      tag: {
+        heading: "One history",
+        body: "one present pregnancy, one careful conversation.",
+      },
     },
     explanation: {
       heading: "What a VBAC conversation covers",
@@ -320,6 +402,29 @@ export const services: readonly ServiceContent[] = [
         "Assessment of this pregnancy's individual factors",
         "An honest discussion of what VBAC would involve, including monitoring during labour",
         "Planning that stays open to a repeat caesarean if that's the safer path",
+      ],
+    },
+    approach: {
+      eyebrow: "A clearer starting point",
+      heading: "VBAC deserves more than a yes or no.",
+      body: "VBAC may be possible for some people. An individual consultation helps you understand your options based on your medical history and current pregnancy.",
+      image: {
+        src: "/images/care/clinic-signage-detail.jpg",
+        alt: "The Birth Wave clinic signage",
+      },
+      items: [
+        {
+          title: "Review",
+          description: "Bring your previous birth history into the conversation.",
+        },
+        {
+          title: "Understand",
+          description: "Ask what your current pregnancy may mean for your options.",
+        },
+        {
+          title: "Plan",
+          description: "Make a care plan with your clinician, not a promise.",
+        },
       ],
     },
     whoItsFor: [

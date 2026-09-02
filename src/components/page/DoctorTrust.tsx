@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { TeamAvatar } from "@/components/TeamAvatar";
 import { Container } from "@/components/Container";
 import { Reveal } from "@/components/motion/Reveal";
@@ -22,10 +21,15 @@ export function DoctorTrust({
       <Container className="grid items-center gap-12 xl:grid-cols-[420px_1fr] xl:gap-16">
         <Reveal>
           <div className="relative mx-auto h-[380px] w-full max-w-sm xl:h-[440px]">
-            <TeamAvatar member={member} className="h-full w-full" />
-            <div className="absolute bottom-5 left-5 rounded-2xl bg-white p-4 shadow-[0_8px_24px_rgba(46,36,33,0.08)]">
+            <TeamAvatar
+              member={member}
+              className="h-full w-full !rounded-[120px_20px_20px_20px]"
+            />
+            <div className="absolute inset-x-5 bottom-5 rounded-2xl bg-white p-4 text-center shadow-[0_8px_24px_rgba(46,36,33,0.08)]">
               <p className="font-display text-[15px] font-bold text-ink">{member.name}</p>
-              <p className="text-[13px] text-muted">{member.role}</p>
+              <p className="mt-0.5 text-[13px] text-muted">
+                {member.role.split(" · ").slice(0, 2).join(" · ")}
+              </p>
             </div>
           </div>
         </Reveal>
@@ -35,7 +39,7 @@ export function DoctorTrust({
             <p className="text-[13px] font-semibold uppercase tracking-[0.14em] text-rose">
               {eyebrow}
             </p>
-            <h2 className="mt-3 max-w-xl font-display text-[32px] font-bold leading-tight text-ink whitespace-pre-line">
+            <h2 className="mt-3 max-w-xl title-section text-ink whitespace-pre-line">
               {heading}
             </h2>
             <p className="mt-4 max-w-xl text-[16px] leading-relaxed text-muted">{body}</p>
@@ -55,12 +59,18 @@ export function DoctorTrust({
               ))}
             </ul>
 
-            <Link
-              href="/doctors"
-              className="mt-6 inline-flex items-center gap-1.5 text-[13px] font-semibold text-link"
+            <a
+              href="#contact-form"
+              className="group mt-7 inline-flex items-center gap-2.5 rounded-full bg-rose px-7 py-3.5 text-[15px] font-semibold text-white shadow-[0_8px_18px_rgba(202,149,133,0.28)] transition-all duration-200 hover:-translate-y-0.5 hover:bg-rose-deep active:scale-[0.98]"
             >
-              Meet the care team <span aria-hidden="true">&rarr;</span>
-            </Link>
+              Book a Consultation with {member.name.split(" ").slice(0, 2).join(" ")}
+              <span
+                aria-hidden="true"
+                className="transition-transform duration-200 group-hover:translate-x-1"
+              >
+                &rarr;
+              </span>
+            </a>
           </div>
         </Reveal>
       </Container>

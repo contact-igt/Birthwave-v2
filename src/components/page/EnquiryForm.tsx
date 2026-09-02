@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { formServiceOptions, getFormServiceTitle } from "@/lib/services";
 import { site } from "@/lib/site";
 import { ensureFirstTouchCaptured, getAttribution } from "@/lib/leads/attribution";
+import { getClientIp, primeClientIp } from "@/lib/leads/ip";
 import { trackEvent } from "@/lib/analytics";
 
 type Status = "idle" | "submitting" | "error";
@@ -16,6 +17,7 @@ export function EnquiryForm({ defaultService }: { defaultService?: string } = {}
 
   useEffect(() => {
     ensureFirstTouchCaptured();
+    primeClientIp();
   }, []);
 
   const [name, setName] = useState("");
@@ -63,6 +65,7 @@ export function EnquiryForm({ defaultService }: { defaultService?: string } = {}
           consent,
           honeypot,
           attribution: getAttribution(),
+          ip_address: await getClientIp(),
         }),
       });
 
@@ -92,7 +95,7 @@ export function EnquiryForm({ defaultService }: { defaultService?: string } = {}
     <form
       id="contact-form"
       onSubmit={handleSubmit}
-      className="relative scroll-mt-[100px] grid w-full max-w-full box-border gap-4 rounded-[24px] border border-border bg-white p-5 sm:p-8 overflow-hidden"
+      className="relative scroll-mt-[100px] grid w-full max-w-full box-border gap-4 overflow-hidden rounded-[28px_80px_28px_28px] border border-border bg-white p-6 shadow-[var(--shadow-od)] sm:p-8"
     >
       {/* Honeypot — hidden from real users, bots often fill every field */}
       <div className="absolute -left-[9999px] h-0 w-0 overflow-hidden" aria-hidden="true">
@@ -110,24 +113,24 @@ export function EnquiryForm({ defaultService }: { defaultService?: string } = {}
 
       <div className="grid w-full min-w-0 max-w-full gap-4 sm:grid-cols-2">
         <label className="flex w-full min-w-0 max-w-full flex-col gap-1.5">
-          <span className="text-sm font-semibold text-ink">Name</span>
+          <span className="text-xs font-semibold text-ink">Name</span>
           <input
             type="text"
             required
             value={name}
             onChange={(e) => setName(e.target.value)}
-            className="w-full min-w-0 max-w-full box-border min-h-11 rounded-xl border border-border bg-cream px-4 text-base text-ink outline-none transition-colors focus:border-brown"
+            className="w-full min-w-0 max-w-full box-border min-h-[2.9rem] rounded-[10px] border border-ink/12 bg-cream px-3 text-base text-ink outline-none transition-colors focus:border-rose"
           />
           {fieldErrors.name && <span className="text-xs text-coral">{fieldErrors.name}</span>}
         </label>
         <label className="flex w-full min-w-0 max-w-full flex-col gap-1.5">
-          <span className="text-sm font-semibold text-ink">Phone</span>
+          <span className="text-xs font-semibold text-ink">Phone</span>
           <input
             type="tel"
             required
             value={phone}
             onChange={(e) => setPhone(e.target.value)}
-            className="w-full min-w-0 max-w-full box-border min-h-11 rounded-xl border border-border bg-cream px-4 text-base text-ink outline-none transition-colors focus:border-brown"
+            className="w-full min-w-0 max-w-full box-border min-h-[2.9rem] rounded-[10px] border border-ink/12 bg-cream px-3 text-base text-ink outline-none transition-colors focus:border-rose"
           />
           {fieldErrors.phone && (
             <span className="text-xs text-coral">{fieldErrors.phone}</span>
@@ -136,12 +139,12 @@ export function EnquiryForm({ defaultService }: { defaultService?: string } = {}
       </div>
 
       <label className="flex w-full min-w-0 max-w-full flex-col gap-1.5">
-        <span className="text-sm font-semibold text-ink">What do you need help with?</span>
+        <span className="text-xs font-semibold text-ink">What do you need help with?</span>
         <select
           required
           value={service}
           onChange={(e) => setService(e.target.value)}
-          className="w-full min-w-0 max-w-full box-border truncate min-h-11 rounded-xl border border-border bg-cream px-4 text-base text-ink outline-none transition-colors focus:border-brown"
+          className="w-full min-w-0 max-w-full box-border truncate min-h-[2.9rem] rounded-[10px] border border-ink/12 bg-cream px-3 text-base text-ink outline-none transition-colors focus:border-rose"
         >
           <option value="">Not sure yet</option>
           {formServiceOptions.map((s) => (
@@ -153,33 +156,33 @@ export function EnquiryForm({ defaultService }: { defaultService?: string } = {}
       </label>
 
       <label className="flex w-full min-w-0 max-w-full flex-col gap-1.5">
-        <span className="text-sm font-semibold text-ink">Email (optional)</span>
+        <span className="text-xs font-semibold text-ink">Email (optional)</span>
         <input
           type="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          className="w-full min-w-0 max-w-full box-border min-h-11 rounded-xl border border-border bg-cream px-4 text-base text-ink outline-none transition-colors focus:border-brown"
+          className="w-full min-w-0 max-w-full box-border min-h-[2.9rem] rounded-[10px] border border-ink/12 bg-cream px-3 text-base text-ink outline-none transition-colors focus:border-rose"
         />
         {fieldErrors.email && <span className="text-xs text-coral">{fieldErrors.email}</span>}
       </label>
 
       <label className="flex w-full min-w-0 max-w-full flex-col gap-1.5">
-        <span className="text-sm font-semibold text-ink">Message (optional)</span>
+        <span className="text-xs font-semibold text-ink">Message (optional)</span>
         <textarea
           value={message}
           onChange={(e) => setMessage(e.target.value)}
           rows={3}
-          className="w-full min-w-0 max-w-full box-border rounded-xl border border-border bg-cream px-4 py-3 text-base text-ink outline-none transition-colors focus:border-brown resize-y"
+          className="w-full min-w-0 max-w-full box-border rounded-[10px] border border-ink/12 bg-cream px-3 py-2.5 text-base text-ink outline-none transition-colors focus:border-rose resize-y"
         />
       </label>
 
-      <label className="flex w-full min-w-0 max-w-full items-start gap-2.5 text-sm leading-relaxed text-ink/80">
+      <label className="flex w-full min-w-0 max-w-full items-start gap-2.5 text-[13px] leading-relaxed text-muted">
         <input
           type="checkbox"
           required
           checked={consent}
           onChange={(e) => setConsent(e.target.checked)}
-          className="mt-0.5 h-4 w-4 shrink-0 accent-brown"
+          className="mt-0.5 h-4 w-4 shrink-0 accent-rose"
         />
         Birthwave may contact me regarding this enquiry or appointment request.
       </label>
@@ -190,19 +193,31 @@ export function EnquiryForm({ defaultService }: { defaultService?: string } = {}
       <button
         type="submit"
         disabled={status === "submitting"}
-        className="mt-2 inline-flex min-h-11 w-full sm:w-auto items-center justify-center rounded-full bg-brown px-7 text-[15px] font-semibold text-white transition-all duration-150 hover:bg-brown-600 active:scale-[0.98] active:bg-brown-700 disabled:opacity-60 disabled:active:scale-100"
+        className="group mt-2 inline-flex min-h-[3rem] w-full items-center justify-center gap-2.5 rounded-full bg-rose px-6 text-sm font-semibold text-white shadow-[0_10px_24px_-6px_rgba(202,149,133,0.55)] transition-transform duration-200 hover:-translate-y-0.5 hover:bg-rose-deep active:translate-y-0 active:scale-[0.98] disabled:opacity-60 disabled:hover:translate-y-0"
       >
-        {status === "submitting" ? "Sending…" : "Send Enquiry"}
+        {status === "submitting" ? (
+          "Sending…"
+        ) : (
+          <>
+            Send Enquiry
+            <span
+              aria-hidden="true"
+              className="transition-transform duration-200 group-hover:translate-x-1"
+            >
+              →
+            </span>
+          </>
+        )}
       </button>
 
       {status === "error" && (
-        <div className="w-full min-w-0 max-w-full rounded-xl border border-coral/40 bg-coral/5 p-4">
+        <div className="w-full min-w-0 max-w-full rounded-[10px] border border-coral/40 bg-coral/5 p-4">
           <p className="text-sm font-medium text-ink">{errorMessage}</p>
           <div className="mt-3 flex flex-wrap gap-3">
             <button
               type="button"
               onClick={handleSubmit}
-              className="rounded-full border border-border bg-white px-5 py-2 text-sm font-semibold text-ink hover:border-brown"
+              className="rounded-full border border-border bg-white px-5 py-2 text-sm font-semibold text-ink hover:border-rose"
             >
               Retry
             </button>
@@ -210,7 +225,7 @@ export function EnquiryForm({ defaultService }: { defaultService?: string } = {}
               href={whatsappFallbackHref()}
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded-full bg-brown px-5 py-2 text-sm font-semibold text-white hover:bg-brown-600"
+              className="rounded-full bg-rose px-5 py-2 text-sm font-semibold text-white hover:bg-rose-deep"
             >
               Continue on WhatsApp
             </a>
@@ -218,7 +233,7 @@ export function EnquiryForm({ defaultService }: { defaultService?: string } = {}
         </div>
       )}
 
-      <p className="text-xs text-muted">
+      <p className="text-[0.7rem] leading-relaxed text-muted">
         Prefer to call? {site.phone}.
       </p>
     </form>

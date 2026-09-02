@@ -59,7 +59,7 @@ export default function AboutPage() {
 
         <section className="bg-white py-16 md:py-20">
           <Container className="max-w-2xl">
-            <h2 className="font-display text-[28px] font-bold leading-tight text-ink">
+            <h2 className="title-section text-ink">
               Our approach
             </h2>
             <p className="mt-4 text-[16px] leading-relaxed text-muted">
@@ -85,7 +85,7 @@ export default function AboutPage() {
         <section className="bg-cream py-16 md:py-20">
           <Container>
             <div className="flex flex-wrap items-end justify-between gap-4">
-              <h2 className="max-w-xl font-display text-[28px] font-bold leading-tight text-ink">
+              <h2 className="max-w-xl title-section text-ink">
                 Meet our care team
               </h2>
               <Link
@@ -115,7 +115,7 @@ export default function AboutPage() {
 
         <section className="bg-cream py-16 md:py-20">
           <Container>
-            <h2 className="max-w-xl font-display text-[28px] font-bold leading-tight text-ink">
+            <h2 className="max-w-xl title-section text-ink">
               From workshops to consultations
             </h2>
             <div className="mt-8 grid gap-5 sm:grid-cols-3">

@@ -84,7 +84,7 @@ export default function ServicesPage() {
 
         <section className="bg-cream py-16 md:py-20">
           <Container>
-            <h2 className="max-w-xl font-display text-[26px] font-bold leading-tight text-ink">
+            <h2 className="max-w-xl title-section text-ink">
               Supporting services
             </h2>
             <p className="mt-3 max-w-xl text-[16px] leading-relaxed text-muted">

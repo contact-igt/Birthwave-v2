@@ -1,45 +1,54 @@
 import { Container } from "@/components/Container";
-import { Reveal } from "@/components/motion/Reveal";
 import { site } from "@/lib/site";
 
 export function ConversionCTA() {
   return (
     <section
       id="conversion-cta"
-      className="scroll-mt-[100px] flex min-h-[300px] items-center bg-blush py-12"
+      className="relative scroll-mt-[100px] overflow-hidden bg-ink py-[100px] text-white"
     >
-      <Reveal className="w-full">
-        <Container className="flex flex-col items-start justify-between gap-8 md:flex-row md:items-center">
-          <div className="max-w-lg">
-            <p className="text-[13px] font-semibold uppercase tracking-[0.14em] text-rose">
-              Need Help Choosing?
-            </p>
-            <h2 className="mt-2 font-display text-[31px] font-bold leading-tight text-ink">
-              Not sure which service to choose?
-            </h2>
-            <p className="mt-2 text-[16px] leading-relaxed text-muted">
-              Tell us what you need help with. We&rsquo;ll guide you to the right
-              appointment pathway.
-            </p>
-          </div>
-          <div className="flex shrink-0 flex-wrap items-center gap-4">
+      <span
+        aria-hidden="true"
+        className="pointer-events-none absolute -top-[250px] -right-[160px] h-[500px] w-[500px] rounded-full border border-white/15"
+      />
+      <Container className="relative z-[1] block md:flex md:items-end md:justify-between md:gap-10">
+        <div>
+          <p className="text-[13px] font-semibold tracking-[0.14em] text-blush uppercase">
+            Need Help Choosing?
+          </p>
+          <h2 className="mt-4 max-w-[650px] title-section">
+            Not sure which service to choose?
+          </h2>
+        </div>
+        <div className="shrink-0">
+          <p className="mt-5 mb-6 max-w-[390px] text-[16px] leading-relaxed text-white/70 md:mt-0">
+            Tell us what you need help with. We&rsquo;ll guide you to the right
+            appointment pathway.
+          </p>
+          <div className="flex flex-wrap items-center gap-4">
             <a
               href="#enquiry"
-              className="rounded-full bg-brown px-7 py-3.5 text-[15px] font-semibold text-white transition-all duration-150 hover:bg-brown-600 active:scale-[0.98] active:bg-brown-700"
+              className="group inline-flex min-h-[50px] items-center justify-center gap-3 rounded-full bg-rose px-[23px] text-sm font-semibold text-white shadow-[0_8px_18px_rgba(202,149,133,0.28)] transition-[transform,background,box-shadow] duration-200 hover:-translate-y-0.5 hover:bg-rose-deep active:translate-y-0 active:scale-[0.98]"
             >
               Book Appointment
+              <span
+                aria-hidden="true"
+                className="text-lg transition-transform duration-200 group-hover:translate-x-1"
+              >
+                →
+              </span>
             </a>
             <a
               href={site.whatsappHref}
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded-full border border-border bg-white px-7 py-3.5 text-[15px] font-semibold text-ink transition-all duration-150 hover:border-brown hover:text-brown active:scale-[0.98]"
+              className="inline-flex min-h-[50px] items-center justify-center rounded-full border border-white/30 bg-transparent px-[23px] text-sm font-semibold text-white transition-colors hover:bg-white/10"
             >
               Chat on WhatsApp
             </a>
           </div>
-        </Container>
-      </Reveal>
+        </div>
+      </Container>
     </section>
   );
 }

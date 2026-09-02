@@ -24,33 +24,51 @@ const steps = [
   },
 ] as const;
 
+const DOT_OFFSETS = ["0%", "33.33%", "66.66%", "100%"];
+
 export function PatientJourney() {
   return (
     <section
       id="patient-journey"
-      className="scroll-mt-[100px] flex min-h-[600px] flex-col justify-center bg-brown py-16 text-white"
+      className="scroll-mt-[100px] bg-cream py-16 md:py-[110px]"
     >
       <Container>
-        <div className="max-w-2xl">
-          <p className="text-[13px] font-semibold uppercase tracking-[0.14em] text-journey-eyebrow">
-            From First Question To Follow Up
-          </p>
-          <h2 className="mt-3 font-display text-[26px] sm:text-[32px] md:text-[37px] font-bold leading-tight text-white">
-            A simpler care journey, with fewer gaps between steps.
-          </h2>
-          <p className="mt-3 text-[16px] leading-relaxed text-border">
-            From initial guidance to treatment and post-care follow up, we support you every step of the way.
+        <div className="mb-[60px] block xl:flex xl:items-end xl:justify-between xl:gap-10">
+          <div className="max-w-[700px]">
+            <p className="text-[13px] font-semibold tracking-[0.14em] text-rose uppercase">
+              From First Question To Follow Up
+            </p>
+            <h2 className="mt-4 title-section text-ink">
+              A simpler care journey, with fewer gaps between steps.
+            </h2>
+          </div>
+          <p className="mt-[18px] max-w-[320px] text-muted xl:mt-0">
+            From initial guidance to treatment and post-care follow up, we support you
+            every step of the way.
           </p>
         </div>
 
-        <ol className="mt-10 grid gap-3.5 sm:grid-cols-2 xl:grid-cols-4">
+        <div
+          aria-hidden="true"
+          className="relative mt-[30px] hidden h-px bg-border sm:block xl:mt-0"
+        >
+          {DOT_OFFSETS.map((left) => (
+            <span
+              key={left}
+              className="absolute -top-1 h-[9px] w-[9px] -translate-x-1/2 rounded-full bg-rose first:translate-x-0 last:-translate-x-full"
+              style={{ left }}
+            />
+          ))}
+        </div>
+
+        <ol className="grid gap-[26px] border-l border-border pl-[25px] sm:grid-cols-4 sm:gap-5 sm:border-l-0 sm:pt-8 sm:pl-0">
           {steps.map((step, i) => (
-            <Reveal key={step.n} as="li" delay={i * 80} className="min-h-[172px] rounded-[22px] bg-journey-card p-6">
-              <span className="text-[13px] font-bold text-coral">{step.n}</span>
-              <h3 className="mt-3 font-display text-[17.5px] font-semibold text-white">
+            <Reveal as="li" key={step.n} delay={i * 80}>
+              <span className="font-display text-[18px] text-rose">{step.n}</span>
+              <h3 className="mt-2.5 mb-[5px] font-display text-[21px] font-bold text-ink">
                 {step.title}
               </h3>
-              <p className="mt-2 text-[15px] leading-relaxed text-border">{step.body}</p>
+              <p className="text-sm text-muted sm:max-w-[180px]">{step.body}</p>
             </Reveal>
           ))}
         </ol>

@@ -47,7 +47,7 @@ export function VideoExperience({
           <p className="text-[13px] font-semibold uppercase tracking-[0.14em] text-rose">
             {eyebrow}
           </p>
-          <h2 className="mt-3 font-display text-[28px] font-bold leading-tight text-ink md:text-[36px]">
+          <h2 className="mt-3 title-section text-ink">
             {heading}
           </h2>
           <p className="mt-3 text-[16px] leading-relaxed text-muted">

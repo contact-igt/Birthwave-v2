@@ -38,7 +38,7 @@ export function Footer() {
         <div className="flex flex-col gap-12 xl:flex-row xl:justify-between">
           <div className="max-w-sm">
             <Link href="/" className="inline-block" aria-label="The Birth Wave - Home">
-              <div className="relative h-[76px] sm:h-[84px] w-64 sm:w-72 overflow-hidden flex items-center justify-start">
+              <div className="relative h-[76px] sm:h-[84px] w-64 sm:w-72 overflow-hidden flex items-center justify-center rounded-2xl bg-rose">
                 <Image
                   src="/images/logo.PNG"
                   alt="The Birth Wave"
@@ -58,7 +58,7 @@ export function Footer() {
           <div className="grid grid-cols-2 gap-10 sm:grid-cols-3 xl:gap-14">
             {columns.map((col) => (
               <nav key={col.heading} aria-label={col.heading}>
-                <p className="font-display text-[16px] sm:text-[17px] font-bold text-white">
+                <p className="text-xs font-semibold tracking-[0.14em] text-blush uppercase">
                   {col.heading}
                 </p>
                 <ul className="mt-4 flex flex-col gap-2.5">
@@ -77,7 +77,7 @@ export function Footer() {
             ))}
 
             <nav aria-label="Contact Info">
-              <p className="font-display text-[16px] sm:text-[17px] font-bold text-white">
+              <p className="text-xs font-semibold tracking-[0.14em] text-blush uppercase">
                 Contact Info
               </p>
               <ul className="mt-4 flex flex-col gap-3.5">

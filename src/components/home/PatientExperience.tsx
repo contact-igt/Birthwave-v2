@@ -40,7 +40,7 @@ export function PatientExperience() {
           <p className="text-[13px] font-semibold uppercase tracking-[0.14em] text-rose">
             Patient Experience
           </p>
-          <h2 className="mt-3 font-display text-[25px] sm:text-[30px] md:text-[35px] font-bold leading-tight text-ink">
+          <h2 className="mt-3 title-section text-ink">
             Trust grows when patients can see the experience, not just the treatment.
           </h2>
           <p className="mt-3 text-[16px] leading-relaxed text-muted">
