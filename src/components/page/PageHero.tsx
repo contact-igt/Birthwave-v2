@@ -47,7 +47,7 @@ export function PageHero({
   intro: string;
   accent?: keyof typeof ACCENT;
   image?: { src: string; alt: string; objectPosition?: string };
-  imageSide?: { src: string; alt: string };
+  imageSide?: { src: string; alt: string; objectPosition?: string };
   illustration?: LineArtVariant;
   badge?: string;
   tag?: { heading: string; body: string };
@@ -163,7 +163,7 @@ export function PageHero({
                   alt={imageSide.alt}
                   fill
                   sizes="(min-width: 1280px) 240px, 41vw"
-                  className="object-cover"
+                  className={`object-cover ${imageSide.objectPosition ?? "object-center"}`}
                 />
               </div>
             )}

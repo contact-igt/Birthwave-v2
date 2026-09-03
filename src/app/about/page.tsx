@@ -25,17 +25,17 @@ export const metadata: Metadata = {
 
 const gallery = [
   {
-    src: "/images/birthwave/birthwave-childbirth-workshop-01.png",
+    src: "/images/about/workshop.jpg",
     alt: "Childbirth education workshop session at Birthwave",
     caption: "Childbirth education workshops",
   },
   {
-    src: "/images/birthwave/birthwave-birth-partner-session.png",
+    src: "/images/about/partner-preparation.jpg",
     alt: "Birth partner preparation session at Birthwave",
     caption: "Birth partner preparation",
   },
   {
-    src: "/images/birthwave/birthwave-community-event.png",
+    src: "/images/about/community.jpg",
     alt: "Birthwave community health event",
     caption: "Community health events",
   },

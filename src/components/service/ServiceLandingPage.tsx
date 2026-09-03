@@ -1,7 +1,7 @@
 import { PageHero } from "@/components/page/PageHero";
 import { WhoItsFor } from "@/components/page/WhoItsFor";
 import { DoctorTrust } from "@/components/page/DoctorTrust";
-import { JourneySteps } from "@/components/page/JourneySteps";
+// import { JourneySteps } from "@/components/page/JourneySteps"; // hidden per request
 import { ServiceApproach } from "@/components/page/ServiceApproach";
 import { VideoExperience } from "@/components/home/VideoExperience";
 import { RelatedSupport } from "@/components/page/RelatedSupport";
@@ -51,6 +51,8 @@ export function ServiceLandingPage({ service }: { service: ServiceContent }) {
         tag={service.hero.tag}
       />
 
+      <VideoExperience />
+
       {service.continuum && (
         <JourneyPathPanel
           eyebrow={service.continuum.eyebrow}
@@ -98,12 +100,14 @@ export function ServiceLandingPage({ service }: { service: ServiceContent }) {
         <WhoItsFor points={service.whoItsFor} />
       )}
 
+      {/* "Pregnancy Journey" steps section — hidden on website + landing pages per request
       <JourneySteps
         eyebrow={service.journey.eyebrow}
         heading={service.journey.heading}
         intro={service.journey.intro}
         steps={service.journey.steps}
       />
+      */}
 
       <DoctorTrust
         member={expert}
@@ -121,8 +125,6 @@ export function ServiceLandingPage({ service }: { service: ServiceContent }) {
           image={service.approach.image ?? service.image}
         />
       )}
-
-      <VideoExperience />
 
       <RelatedSupport
         currentSlug={service.slug}

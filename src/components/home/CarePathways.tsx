@@ -12,7 +12,7 @@ const pathways = [
     body: "Fertility, preconception and cycle guidance for your starting chapter.",
     link: "Fertility & Preconception",
     href: "/fertility-preconception",
-    image: "/images/birthwave/birthwave-prenatal-workshop.png",
+    image: "/images/care/prenatal-workshop.jpg",
     alt: "Planning a pregnancy counseling at Birthwave",
   },
   {
@@ -34,7 +34,7 @@ const pathways = [
     body: "Normal birth preparation, VBAC guidance and birth partner readiness.",
     link: "Natural Birth",
     href: "/natural-birth",
-    image: "/images/birthwave/birthwave-birth-position-practice.png",
+    image: "/images/care/birth-position-practice2.jpg",
     alt: "Birth options and positioning practice",
   },
   {
@@ -45,8 +45,8 @@ const pathways = [
     body: "Gynaecology, vaginismus treatment, pelvic wellness and holistic support.",
     link: "Gynaecology & Wellness",
     href: "/gynaecology",
-    image: "/images/birthwave/birthwave-childbirth-workshop-01.png",
-    alt: "Women's wellness and education session",
+    image: "/womens-care.jpg",
+    alt: "Women's wellness and gynaecology care at Birthwave",
   },
 ] as const;
 
