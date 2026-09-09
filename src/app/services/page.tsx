@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
@@ -6,6 +7,7 @@ import { Container } from "@/components/Container";
 import { PageHero } from "@/components/page/PageHero";
 import { PageCTA } from "@/components/page/PageCTA";
 import { EnquirySection } from "@/components/page/EnquirySection";
+import { VideoExperience } from "@/components/home/VideoExperience";
 import { services, supportingServices } from "@/lib/services";
 
 export const metadata: Metadata = {
@@ -29,6 +31,8 @@ export default function ServicesPage() {
             alt: "Every stage of care at The Birth Wave",
           }}
         />
+
+        <VideoExperience />
 
         <section className="bg-cream py-10">
           <Container>
@@ -62,20 +66,33 @@ export default function ServicesPage() {
                 <Link
                   key={service.slug}
                   href={`/${service.slug}`}
-                  className="group flex flex-col rounded-[22px] border border-border bg-cream p-6 transition-colors hover:border-brown"
+                  className="group flex flex-col overflow-hidden rounded-[22px] border border-border bg-cream transition-colors hover:border-brown"
                 >
-                  <span className="flex h-10 w-10 items-center justify-center rounded-full bg-white text-xs font-bold text-coral">
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
-                  <h2 className="mt-4 font-display text-lg font-bold text-ink">
-                    {service.title}
-                  </h2>
-                  <p className="mt-2 flex-1 text-[16px] leading-relaxed text-muted">
-                    {service.shortDescription}
-                  </p>
-                  <span className="mt-4 inline-flex items-center gap-1.5 text-[13px] font-semibold text-link">
-                    Learn more <span aria-hidden="true">&rarr;</span>
-                  </span>
+                  {service.image && (
+                    <div className="relative aspect-[4/3] overflow-hidden">
+                      <Image
+                        src={service.image.src}
+                        alt={service.image.alt}
+                        fill
+                        sizes="(min-width: 1280px) 33vw, (min-width: 640px) 50vw, 100vw"
+                        className="object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+                      />
+                    </div>
+                  )}
+                  <div className="flex flex-1 flex-col p-6">
+                    <span className="flex h-10 w-10 items-center justify-center rounded-full bg-white text-xs font-bold text-coral">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <h2 className="mt-4 font-display text-lg font-bold text-ink">
+                      {service.title}
+                    </h2>
+                    <p className="mt-2 flex-1 text-[16px] leading-relaxed text-muted">
+                      {service.shortDescription}
+                    </p>
+                    <span className="mt-4 inline-flex items-center gap-1.5 text-[13px] font-semibold text-link">
+                      Learn more <span aria-hidden="true">&rarr;</span>
+                    </span>
+                  </div>
                 </Link>
               ))}
             </div>

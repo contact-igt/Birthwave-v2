@@ -6,7 +6,7 @@ export type ServiceContent = {
   title: string;
   shortDescription: string;
   accent: "rose" | "blue" | "coral";
-  image?: { src: string; alt: string };
+  image?: { src: string; alt: string; objectPosition?: string };
   /** Smaller overlapping photo shown in the v2-style layered hero. When absent
    *  the hero renders a single arched photo (or the illustration fallback). */
   imageSide?: { src: string; alt: string };
@@ -91,8 +91,8 @@ export const services: readonly ServiceContent[] = [
       "Routine and high-touch pregnancy care with a clear plan for each trimester.",
     accent: "rose",
     image: {
-      src: "/images/care/birth-partner-session.png",
-      alt: "A pregnant woman and her partner in a calm antenatal session",
+      src: "/images/care/personalised-care.jpg",
+      alt: "A doctor's hands supporting a pregnant woman during an antenatal check",
     },
     imageSide: {
       src: "/images/care/antenatal-movement-coaching.png",
@@ -148,8 +148,8 @@ export const services: readonly ServiceContent[] = [
       heading: "Pregnancy care is more than appointments and scans.",
       body: "Medical care is at the centre of your pregnancy journey, but how you eat, move, prepare, understand your body and feel emotionally also matters.\nBirthwave brings these parts of pregnancy care together around you.",
       image: {
-        src: "/images/care/childbirth-workshop-01.png",
-        alt: "A small group childbirth education workshop at The Birth Wave",
+        src: "/images/care/pregnancy-care2.jpg",
+        alt: "A guided pregnancy movement and preparation class at Birthwave",
       },
       items: [
         {
@@ -377,6 +377,7 @@ export const services: readonly ServiceContent[] = [
     image: {
       src: "/images/care/postpartum-baby-feet.png",
       alt: "A newborn's feet resting against a mother's postpartum belly",
+      objectPosition: "object-[50%_40%] scale-[1.3]",
     },
     imageSide: {
       src: "/images/home/dr-santoshi-clinic.jpg",
@@ -499,8 +500,9 @@ export const services: readonly ServiceContent[] = [
     shortDescription: "Evaluation, counselling and planning before pregnancy.",
     accent: "blue",
     image: {
-      src: "/images/birthwave/birthwave-prenatal-workshop.png",
+      src: "/images/care/prenatal-workshop.jpg",
       alt: "Preconception and fertility planning consultation at Birthwave",
+      objectPosition: "object-[50%_20%] scale-[1.5]",
     },
     illustration: "fertility",
     hero: {
@@ -574,6 +576,10 @@ export const services: readonly ServiceContent[] = [
     title: "Vaginismus & Intimate Wellness",
     shortDescription: "Private, sensitive support for pain, fear and intimacy-related concerns.",
     accent: "rose",
+    image: {
+      src: "/images/care/vaginismus-banner.jpg",
+      alt: "A supportive Birthwave wellness workshop",
+    },
     illustration: "vaginismus",
     hero: {
       eyebrow: "Vaginismus & Intimate Wellness",
@@ -647,6 +653,10 @@ export const services: readonly ServiceContent[] = [
     shortDescription:
       "Care for menstrual, hormonal, PCOS and common gynaecological concerns.",
     accent: "rose",
+    image: {
+      src: "/images/care/gynaecology-banner.jpg",
+      alt: "Women and families taking part in a Birthwave care workshop",
+    },
     illustration: "pregnancy",
     hero: {
       eyebrow: "Gynaecology & Women’s Wellness",
@@ -716,6 +726,10 @@ export const services: readonly ServiceContent[] = [
     shortDescription:
       "Gentle, expert guidance for baby latching, positioning, milk supply and postpartum feeding.",
     accent: "coral",
+    image: {
+      src: "/images/care/lactation-banner.jpg",
+      alt: "Parents with their newborn baby at Birthwave",
+    },
     illustration: "newborn",
     hero: {
       eyebrow: "Lactation Support & Feeding Care",
@@ -786,7 +800,7 @@ export const services: readonly ServiceContent[] = [
       "Comprehensive birth preparation, labour guidance, and birth partner readiness with experienced birth doulas.",
     accent: "coral",
     image: {
-      src: "/images/birthwave/birthwave-birth-position-practice.png",
+      src: "/images/care/birth-position-practice2.jpg",
       alt: "Birthing position practice during a Birthwave childbirth workshop",
     },
     illustration: "birth",
@@ -1004,8 +1018,9 @@ export const services: readonly ServiceContent[] = [
     shortDescription: "Newborn review, vaccination guidance and continuing pediatric care.",
     accent: "coral",
     image: {
-      src: "/images/birthwave/hero2.png",
-      alt: "Newborn and pediatric care at The Birth Wave",
+      src: "/images/care/child-care.png",
+      alt: "Parents holding their baby during newborn and pediatric care",
+      objectPosition: "object-[50%_15%]",
     },
     illustration: "newborn",
     hero: {

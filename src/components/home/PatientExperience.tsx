@@ -9,25 +9,23 @@ const categories = [
   {
     label: "Pregnancy Care",
     body: "Clear guidance across scans, appointments and birth preparation.",
-    image: "/images/birthwave/birthwave-prenatal-workshop.png",
-    alt: "Prenatal workshop session at Birthwave",
-    // Both subjects' heads sit in the top third of this square source photo —
-    // the default centered crop in this wide card cuts them off entirely, so
-    // this one needs an explicit top-biased focal point.
-    focal: "object-[50%_12%]",
+    image: "/images/home/pregnancy-care2.jpg",
+    alt: "Pregnancy care session at Birthwave",
+    focal: "object-[50%_31%]",
   },
   {
     label: "Birth Support",
     body: "Conversations that help patients understand preferences and options.",
-    image: "/images/birthwave/birthwave-birth-partner-session.png",
-    alt: "Birth partner preparation session at Birthwave",
-    focal: "object-center",
+    image: "/images/home/birth-support.jpg",
+    alt: "Birth support session at Birthwave",
+    // Nudge slightly up so the parents' heads stay in frame.
+    focal: "object-[50%_33%]",
   },
   {
     label: "Postpartum + Baby",
     body: "Continuity from recovery into newborn and pediatric care.",
-    image: "/images/birthwave/birthwave-community-event.png",
-    alt: "Birthwave community care event",
+    image: "/images/home/postpartum-baby2.jpg",
+    alt: "Postpartum and newborn care at Birthwave",
     focal: "object-center",
   },
 ] as const;
